@@ -6,55 +6,73 @@
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <script src="/css/bootstrap.bundle.min.js"></script>
     <title>과제 4</title>
-    <script>
-        function binarytohex(number) {
-            var number = document.getElementById("number").value;
-
-            for (var i = 0; i < number.length; i += 4)
-
-        }
-        function pascal_triangle(height) {
-            var height = document.getElemnetById("height").value;
-            for (i = 0; i < height; i++) {
-                triangle[i] = [];
-                for (j = 0; j <= i; j++) {
-                    if (j === 0, j === i) {
-                        triangle[i][j] = 1
-                    } else {
-                        triangle[i][j]  = triangle[i -1][j -1] + triangle[i - 1][j];
-                    }
+        <script>
+        // 2진수를 16진수로 변환하는 함수 정의
+        var number = document.getElementById("number");
+        function transform() {
+            function bintodec(bin) {
+                var x = 0;
+                for (var i = 0; i < bin.length; i++) {
+                    x += bin[i] * 2**(bin.length-1-i);
                 }
+                return x
             }
-            return triangle;
-        }
-        function print_triangle(triangle) {
-            for (i = 0; i < triangle.length; i++) {
-                document.write(triangle);
+            function dectohex(dec) {
+                var y = "";
+                while (dec) {
+                    switch (dec % 16) {
+                        case 10:
+                            y = "A" + y;
+                            break
+                        case 11:
+                            y = "B" + y;
+                            break;
+                        case 12:
+                            y = "C" + y;
+                            break;
+                        case 13:
+                            y = "D" + y;
+                            break;
+                        case 14:
+                            y = "E" + y;
+                            break;
+                        case 15:
+                            y = "F" + y;
+                            break;
+                        default:
+                            y = (dec % 16) + y;
+                            break;
+                    }
+                    dec = parseInt(dec/16);
+                }
+                return value2;
             }
+            var result = document.getElementById("result").innerHTML
         }
     </script>
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
 <div class="container m-5">
-    <h3 class="margin">2진수 변환기</h3>
-    <p>
-        <span class="text-primary">2진수:</span>
-        <input type="text" id="number">
-        <button onclick="binarytohex" class="btn btn-dark">===></button>
-        <span class="text-primary">16진수:</span>
-        <input type="text" id="result">
-    </p>
+    <div class="h3">2진수 변환기</div>
+    <div>
+        <label class="form-label text-primary">2진수:
+            <input type="text" id="number">
+        </label>
+        <button onclick="transform()" class="btn btn-dark">===></button>
+        <label class="text-primary">16진수:
+            <input type="text" id="result">
+        </label>
+    </div>
     <hr>
-</div>
-<div class="container m-5">
-    <h3>파스칼 삼각형</h3>
-    <p>
-        <span class="text-primary">삼각형 높이</span>
-        <input type="text" id="height">
-        <button onclick="pascal_triangle" class="btn btn-success">그리기</button>
-    </p>
-    <div id="pascal" class="bg-secondary"></div>
+    <div class="h3">파스칼 삼각형</div>
+    <div>
+        <label class="form-label text-primary">삼각형 높이
+            <input type="number" id="height" min="1" max="20" step="1" value="1">
+        </label>
+        <button onclick="pascal_triangle()" class="btn btn-success">그리기</button>
+    </div>
+    <div id="pascal" class="text-bg-secondary"></div>
 </div>
 </body>
 </html>
