@@ -8,8 +8,8 @@
     <title>과제 4</title>
         <script>
         // 2진수를 16진수로 변환하는 함수 정의
-        var number = document.getElementById("number");
         function transform() {
+            document.getElementById("number").addEventListener("click", transform);
             function bintodec(bin) {
                 var x = 0;
                 for (var i = 0; i < bin.length; i++) {
@@ -45,9 +45,9 @@
                     }
                     dec = parseInt(dec/16);
                 }
-                return value2;
+                return y;
             }
-            var result = document.getElementById("result").innerHTML
+            document.getElementById("result").innerHTML = y;
         }
     </script>
     <link rel="stylesheet" href="../css/bootstrap.css">
@@ -61,7 +61,7 @@
         </label>
         <button onclick="transform()" class="btn btn-dark">===></button>
         <label class="text-primary">16진수:
-            <input type="text" id="result">
+            <input type="text" id="result" readonly>
         </label>
     </div>
     <hr>
