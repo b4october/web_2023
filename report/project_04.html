@@ -41,7 +41,27 @@
         document.getElementById("result").innerHTML = number;
     }
     </script>
-
+    <script>
+        function pascal_triangle(height) {
+            var height = document.getElementById("height").value;
+            for (i=0; i<height; i++) {
+                var triangle[i] = [];
+                for (var j=0; j<=i; j++) {
+                    if (j===0, j===i) {
+                        triangle[i][j] = 1
+                    } else {
+                        triangle[i][j] = triangle[i-1][j-1] + triangle[i-1][j];
+                    }
+                }
+            }
+            return triangle;
+        }
+        function print_triangle(triangle) {
+            for (i=0; i<triangle.length; i++) {
+                document.getElementById("pascal").innerHTML = triangle;
+            }
+        }
+    </script>
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
