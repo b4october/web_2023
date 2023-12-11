@@ -6,49 +6,40 @@
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <script src="/css/bootstrap.bundle.min.js"></script>
     <title>과제 4</title>
-        <script>
-        // 2진수를 16진수로 변환하는 함수 정의
+    <script>
         function transform() {
-            document.getElementById("number").addEventListener("click", transform);
-            function bintodec(bin) {
-                var x = 0;
-                for (var i = 0; i < bin.length; i++) {
-                    x += bin[i] * 2**(bin.length-1-i);
+            var number = parseInt(document.getElementById("number").value,2);
+            var value = ""
+            while (number) {
+                switch (number % 16) {
+                    case 10:
+                        value = "A" + number;
+                        break;
+                    case 11:
+                        value = "B" + number;
+                        break;
+                    case 12:
+                        value = "C" + number;
+                        break;
+                    case 13:
+                        value = "D" + number;
+                        break;
+                    case 14:
+                        value = "E" + number;
+                        break;
+                    case 15:
+                        value = "F" + number;
+                        break;
+                    default:
+                        value = (number % 16) + value;
+                        break;
                 }
-                return x
+                number = parseInt(number / 16);
             }
-            function dectohex(dec) {
-                var y = "";
-                while (dec) {
-                    switch (dec % 16) {
-                        case 10:
-                            y = "A" + y;
-                            break
-                        case 11:
-                            y = "B" + y;
-                            break;
-                        case 12:
-                            y = "C" + y;
-                            break;
-                        case 13:
-                            y = "D" + y;
-                            break;
-                        case 14:
-                            y = "E" + y;
-                            break;
-                        case 15:
-                            y = "F" + y;
-                            break;
-                        default:
-                            y = (dec % 16) + y;
-                            break;
-                    }
-                    dec = parseInt(dec/16);
-                }
-                return y;
-            }
-            document.getElementById("result").innerHTML = y;
+            return value;
         }
+        document.getElemntById("result").innerHTML = number;
+    }
     </script>
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
